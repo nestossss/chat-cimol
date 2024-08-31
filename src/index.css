@@ -1,0 +1,5 @@
+:root {
+  --bs-border-color: #1c1c1c;
+  --bs-dark-rgb: 24, 24, 24;
+  min-height: 100vh; 
+}
