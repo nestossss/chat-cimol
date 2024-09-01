@@ -108,7 +108,7 @@ img {
 
 .loader {
   border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 12px solid #525252; /* Blue */
+  border-top: 8px solid #525252; /* Blue */
   border-radius: 50%;
   width: 80px;
   height: 80px;

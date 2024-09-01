@@ -24,7 +24,10 @@ function App() {
     nick: null,
     token: null,
     userId: null,
-    salaAtual: null,
+    salaAtual: {
+      id: null,
+      nome: null,
+    },
     isAuthenticated: false,
   });
   

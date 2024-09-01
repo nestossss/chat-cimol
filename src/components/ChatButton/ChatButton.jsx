@@ -11,7 +11,10 @@ function ChatButton({sala}) {
       e.preventDefault();
       setSession({
          ...session,
-         salaAtual: sala._id,
+         salaAtual: {
+            id: sala._id,
+            nome: sala.nome,
+         },
       });
    }
 
