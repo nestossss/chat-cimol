@@ -6,10 +6,11 @@ import axios from 'axios'
 import { useSession } from '../../hooks/useSession';
 import { CreateRoomModal } from '../../components/CreateRoomModal/CreateRoomModal';
 import { Chat } from '../../components/Chat/Chat';
+import { Navigate } from 'react-router-dom';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-function ChatScreen() {
+function ChatScreen({socket}) {
   const controller = new AbortController();
 
   const [session, setSession ] = useSession();
@@ -48,6 +49,10 @@ function ChatScreen() {
 
   //um monte de component hipotetico por enquanto
   // dentro de ListasChat vai ter a barra de pesquisa, e 
+
+  if(!session.userId || !session.token || !session.nick){
+    return <Navigate to='/' replace/>
+  }
   if(!salas){
     return (
       <div className='loader-container d-flex align-items-center justify-content-center'>
@@ -73,8 +78,8 @@ function ChatScreen() {
 
         <div className="container-fluid">
           <div className="row">
-            <nav className="col-md-3 col-lg-2 d-md-block sidebar position-fixed h-100">
-            <div className="position-sticky"> { /*style="top: 0;*/}
+            <nav className="col-md-3 col-lg-3 d-md-block sidebar position-fixed h-100">
+            <div className="position-sticky" style={{ top: 0 }}>
                 <div className="p-3">
                     <div className="input-group">
                         <input type="text" className="form-control search-input" placeholder="Busque grupos"/>
@@ -88,20 +93,21 @@ function ChatScreen() {
                         <div className='d-flex align-items-center justify-content-center w-100 h-50'>
                           <h5 className='text-secondary'>Não existe nenhuma sala</h5>
                         </div>
-                        : ( salas.map( (sala) => <ChatButton sala={sala}/> ) 
-
-                        )                     
+                        : salas.map( (sala) => <ChatButton sala={sala}/> )                     
                     } 
-                    <a onClick={(e) => {
-                      e.preventDefault();
-                      setModalVisible(true);
-                    }}>
-                      Clique aqui para criar uma sala
-                    </a>
+                    <div className='criarSalaBtn text-center p-4'>
+                      <a
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setModalVisible(true);
+                        }}>
+                        Clique aqui para criar uma sala
+                      </a>
+                    </div>
                 </div>
             </div>
           </nav>
-          <Chat/>
+          <Chat socket={socket}/>
           
           </div>
         </div>  

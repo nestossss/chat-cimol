@@ -14,6 +14,7 @@ function ChatButton({sala}) {
          salaAtual: {
             id: sala._id,
             nome: sala.nome,
+            messages: session.salaAtual.messages,
          },
       });
    }

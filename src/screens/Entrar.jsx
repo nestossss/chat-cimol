@@ -38,8 +38,7 @@ function Entrar() {
                token: res.data.token,
                nick: nick,
                salaAtual: {
-                  id: null,
-                  nome: null,
+                  ...session.salaAtual
                },
                isAuthenticated: true,
             });

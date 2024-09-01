@@ -1,0 +1,37 @@
+
+.message p {
+   padding: 5px 15px;
+   background-color: rgb(49, 49, 53);
+   border-radius: 12px;
+   border-top-left-radius: 0px;
+   width: fit-content;
+ }
+
+ .message img {
+   margin-right: .5rem;
+ }
+
+ .your-message {
+   display: flex;
+   flex-direction: column;
+   align-items: end;
+ }
+ .your-message div {
+   justify-content: end;
+   flex-direction:  row-reverse;
+ }
+ .your-message div strong {
+   display: none;
+ }
+ .your-message p {
+   padding: 5px 15px;
+   background-color: #7777f5;
+   border-radius: 12px;
+   border-top-right-radius: 0px;
+   width: fit-content;
+ }
+ 
+ .your-message img {
+   display: none;
+   margin-left: .5rem;
+ }

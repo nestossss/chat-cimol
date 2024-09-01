@@ -38,13 +38,20 @@ function CreateRoomModal({visibleState, roomCountState}){
       setRoomCount( prev => prev + 1 );
       setSession({
          ...session,
-         salaAtual: res?.data?.idSala? res.data.idSala : null,
+         salaAtual: {
+            ...session.salaAtual,
+            id: res?.data?.idSala? res.data.idSala : null,
+         },
       })
    } 
 
    return (
-      <div className={"w-100 h-100 justify-content-center align-items-center "+(visible? "d-flex" : "d-none")} style={{ zIndex: 1, position: "absolute"}}>
-         <form onSubmit={handleSalvar} className="bg-white p-5 d-flex flex-column" style={{borderRadius: 20}}>
+      <div onClick={ (e) => {
+         if(e.target == e.currentTarget){
+            setVisible(false);
+         }
+      }} className={"w-100 h-100 justify-content-center align-items-center "+(visible? "d-flex" : "d-none")} style={{ zIndex: 1, position: "absolute"}}>
+         <form  onSubmit={handleSalvar} name="formSalvar" className="bg-white p-5 d-flex flex-column" style={{borderRadius: 20}}>
             <input name="inputNome" type="text" placeholder="Nome da sala" />
             <input name="inputSenha" disabled={!salvarChecked} type="text"  placeholder="Senha da sala"/>
             <div className="d-flex py-2">

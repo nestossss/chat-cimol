@@ -3,11 +3,14 @@
    color: rgb(161, 161, 161);
    background-color: #121212; 
    border: none; 
+   padding-top: 0.75rem;
+   padding-bottom: 0.75rem;
  }
  
 .list-group-item:hover {
    color: white; 
    background-color: #1e1e1e; 
+   cursor: pointer;
  }
  
 .list-group-item.active {
