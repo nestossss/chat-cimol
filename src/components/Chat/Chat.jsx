@@ -10,17 +10,6 @@ function Chat({socket}){
 
   const [session, setSession] = useSession();
   const messages = session.salaAtual.messages;
-  const pushMessage = (msgObj) => {
-   setSession( prev => {
-      return {
-         ...prev,
-         salaAtual: {
-            ...prev.salaAtual,
-            messages: prev?.salaAtual?.messages? prev.salaAtual.messages.concat([msgObj]) : null
-         }
-      }
-   })
-  }
 
   const ChatMessagesDoc = document.getElementById('message-list');
    useEffect( () => {
@@ -83,8 +72,6 @@ function Chat({socket}){
          }
       })
    }
-
-   
    if(session.salaAtual.id){
       fetchData();
    }
@@ -98,7 +85,6 @@ function Chat({socket}){
       let message = e.target.elements.messageInput.value;
       if(message == "") return
       e.target.elements.messageInput.value = "";
-      if(message.length < 0) return;
       socket.emit('enviar mensagem', {
          "idUser": session.userId,
          "content": message,
@@ -109,7 +95,16 @@ function Chat({socket}){
          'timestamp': Date.now(),
          'isSending': true,
       }
-      pushMessage(msgObj);
+      setSession( prev => {
+         return {
+            ...prev,
+            salaAtual: {
+               ...prev.salaAtual,
+               messages: prev?.salaAtual?.messages? prev.salaAtual.messages.concat([msgObj]) : null
+            }
+         }
+      })
+      
    }
 
    if(session.salaAtual.id == null){
@@ -121,7 +116,7 @@ function Chat({socket}){
          </div>
       )
    }
-   if(messages == null){
+   if(messages == null || !socket.connected){
       return (
          <div className="col-md-9 h-100 ms-sm-auto col-lg-9 px-md-4 offset-md-3 offset-lg-2 d-flex justify-content-center align-items-center">
             <div className="d-flex justify-content-center align-items-center chat-warning">
@@ -146,7 +141,7 @@ function Chat({socket}){
             <i className="bi bi-emoji-smile me-2"></i>
             <input name="messageInput" type="text" onSubmit={e => {e.preventDefault()}} className="form-control chat-input me-2" placeholder="Enviar mensagem..."/>
             <button type="submit" className="btn btn-primary d-flex align-items-center">
-              <i className="bi bi-send me-1"></i> Enviar
+              <i className="bi bi-send me-1"></i>Enviar
             </button>
          </form>
       </main>

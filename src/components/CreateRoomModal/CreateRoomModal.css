@@ -11,9 +11,48 @@
 }
 
 .text-check-btn {
-   color: black;
+   color: rgb(255, 255, 255);
    vertical-align: top;
 }
 .checkBox {
+   background-color: #1e1e1e;
    width: 15px;
+}
+
+.inputNome {
+   box-shadow: none;
+   max-width: 70vw;
+   width: 20rem;
+   border: none;
+   background-color: #1e1e1e;
+}
+.inputNome::placeholder {
+   color: rgb(150, 150, 150);
+}
+.inputNome:focus{
+   background-color: black;
+   outline-color: black;
+   outline-style: hidden;
+}
+
+.formSalvar {
+   max-width: 80vw;
+
+   padding-left: 5rem;
+   padding-right: 5rem;
+}
+
+.inputSenha {
+   color: #Fff;
+   box-shadow: none;
+   border: none;
+   background-color: #1e1e1e;
+}
+.inputSenha::placeholder {
+   color: rgb(150, 150, 150);
+}
+.inputSenha:focus{
+   background-color: black;
+   outline-color: black;
+   outline-style: hidden;
 }

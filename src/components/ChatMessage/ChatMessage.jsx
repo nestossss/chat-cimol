@@ -5,10 +5,10 @@ function ChatMessage({userNick, message, loading}) {
    return (
       <div className={userNick == message.usuario? "your-message" : "message"}>
          <div className="d-flex align-items-center mb-3">
-            <img src={profileImg} className="rounded-circle" alt="User Image"/>
+            <img src={profileImg} className={"rounded-circle"} alt="User Image"/>
             <strong>{message.usuario}</strong>
          </div>
-         <p>{message.content}</p>
+         <p className={userNick == message.usuario? 'bg-primary' : ""}>{message.content}</p>
       </div>
    )
 }
