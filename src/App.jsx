@@ -28,14 +28,10 @@ function App() {
 
   useEffect(() => {
    socket.connect();
-   socket.on('chat', listenerTest);
-   socket.onAny(anyListener);
-   console.log('listeners: '+ socket.listeners);
-   console.log('listen to chat :) ')
-
+   socket.on('chat', listenerChat);
+    
    return () => {
-    socket.off('chat', listenerTest);
-    socket.offAny(anyListener);
+    socket.off('chat', listenerChat);
     socket.disconnect();
 
     console.log('page reload, listener from "chat" off');
@@ -54,7 +50,7 @@ function App() {
     isAuthenticated: false,
   });
   
-  const listenerTest = (...args) => {
+  const listenerChat = (...args) => {
     if(args.length == 1 || !args.length){
       if(typeof args[0] == 'object' && args[0].content && args[0].usuario && args[0].timestamp && authInfo.salaAtual.messages != null){
         return setAuthInfo( prev => {
@@ -73,10 +69,6 @@ function App() {
     console.log('args wouldnt be an array')
     console.log(args)
     
-  }
-  
-  const anyListener = () => {
-    console.log("some random event");
   }
   
 
