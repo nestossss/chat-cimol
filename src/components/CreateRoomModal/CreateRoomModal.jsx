@@ -54,8 +54,8 @@ function CreateRoomModal({visibleState, roomCountState}){
       }} className={"w-100 h-100 justify-content-center align-items-center "+(visible? "d-flex" : "d-none")} style={{ zIndex: 1, position: "absolute"}}>
          <form  onSubmit={handleSalvar} name="formSalvar" className="formSalvar py-5 d-flex flex-column" style={{borderRadius: 20, backgroundColor: '#1e1e1e' }}>
             <p className="text-white h4 text-center mb-3">Criar Sala</p>
-            <input name="inputNome" autoComplete="off" className="inputNome mb-3 px-2 py-1" type="text" placeholder="Nome da sala" />
-            <input name="inputSenha" autoComplete="off" className="inputSenha mb-3 px-2 py-1" disabled={!salvarChecked} type="text"  placeholder="Senha da sala"/>
+            <input name="inputNome" autoComplete="off" className="inputNome text-white mb-3 px-2 py-1" type="text" placeholder="Nome da sala" />
+            <input name="inputSenha" autoComplete="off" className="inputSenha text-white mb-3 px-2 py-1" disabled={!salvarChecked} type="text"  placeholder="Senha da sala"/>
             <div className="d-flex py-2 mb-3">
                <input className="d-flex m-0 checkBox" onClick={(e) => { setSalvarChecked(e.target.checked) }} id="checkSalvar" name="checkSalvar" type="checkbox" />
                <p className="text-check-btn m-0 px-2 h-100">Criar com senha</p>

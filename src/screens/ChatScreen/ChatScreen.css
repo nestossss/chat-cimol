@@ -10,11 +10,9 @@
       border-radius: 1.5rem;
    }
    .textCriarSalaBtn:hover {
-      background-color: #00ff00;
+      background-color: #313131;
    }
-   .textCriarSalaBtn:active {
-      background-color: #ff0000;
-   }
+
 
  .salas-list {
    height: calc(100vh - 120px);

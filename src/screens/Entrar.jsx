@@ -68,8 +68,8 @@ function Entrar() {
                <h1 className="mb-4 text-center">Entrar no chat</h1>
                <form onSubmit={handleSubmit}>
                   <div className="mb-3">
-                     <label for='nick' className="form-label">Email</label>
-                     <input type="text" className="form-control" id="nick" placeholder={"Digite seu nick"}/>
+                     <label for='nick' className="form-label">Nick</label>
+                     <input type="text" autoComplete="off" className="form-control" id="nick" placeholder={"Digite seu nick"}/>
                   </div>
                   <div className="d-flex justify-content-between align-items-center">
                      <button type="submit" className="btn btn-primary">Entrar</button>

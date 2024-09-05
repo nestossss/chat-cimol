@@ -23,17 +23,11 @@ function Chat({socket}){
       return
    }
 
-   console.log('will emit to "entrar na sala"')
    socket.emit('entrar na sala', {
       "idSala": session?.salaAtual?.id,
       "idUser": session.userId,
-   })
-   console.log('emitted to "entrar na sala"')
-
-   console.log("listeners for chat: "+socket.listeners('chat'));
-   console.log("has listeners: "+ socket.hasListeners('chat'));
+   })   
    
-
    const controller = new AbortController();
    const signal = controller.signal;
 
@@ -76,7 +70,7 @@ function Chat({socket}){
       fetchData();
    }
    return () => {
-      // controller.abort();
+      controller.abort();
    }
  }, [session.salaAtual.id]) 
 
@@ -109,7 +103,7 @@ function Chat({socket}){
 
    if(session.salaAtual.id == null){
       return (
-         <div className="col-md-9 h-100 ms-sm-auto col-lg-9 px-md-4 offset-md-3 offset-lg-2 d-flex justify-content-center align-items-center">
+         <div className="col-md-12 h-100 ms-sm-auto col-lg-9 px-md-4 offset-md-3 offset-lg-2 d-flex justify-content-center align-items-center">
             <div className="d-flex justify-content-center align-items-center chat-warning">
                <h4 className="text-center align-middle">Entre em uma sala para iniciar a conversa</h4>
             </div>

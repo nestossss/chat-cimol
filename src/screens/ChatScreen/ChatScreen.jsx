@@ -91,7 +91,7 @@ function ChatScreen({socket}) {
 
         <div className="container-fluid">
           <div className="row">
-            <nav className="col-md-3 col-lg-3 d-md-block sidebar position-fixed h-100">
+            <nav className="col-md-12 col-lg-3 d-md-block sidebar position-md-fixed h-100 ">
             <div className="position-sticky" style={{ top: 0 }}>
                 <div className="p-3">
                     <div className="input-group">
